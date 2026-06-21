@@ -16,6 +16,8 @@ background_mode = 2
 sky = SubResource("Sky_wm4b4")
 ssao_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7r350"]
+
 [node name="Node3D" type="Node3D" unique_id=1887337499]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=248791800]
@@ -31,3 +33,12 @@ use_collision = true
 size = Vector3(15, 1, 15)
 
 [node name="Node3D" parent="." unique_id=185713420 instance=ExtResource("1_f8axi")]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=67176573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7417686, 1.2015475, 0)
+use_collision = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D2" unique_id=1271006674]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D" unique_id=1622803242]
+shape = SubResource("BoxShape3D_7r350")

@@ -1,20 +1,35 @@
 [gd_scene format=3 uid="uid://dar35020tx42"]
 
 [ext_resource type="Script" uid="uid://2bljdxwr2k7o" path="res://Scripts/character_body_3d.gd" id="1_fy71y"]
+[ext_resource type="Script" uid="uid://cxty7lsgvna00" path="res://Scripts/pivot.gd" id="2_jnnqk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1vekt"]
+radius = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vekt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vekt"]
 albedo_color = Color(1, 0.17254902, 1, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1vekt"]
-radius = 0.2
-
 [node name="Node3D" type="Node3D" unique_id=185713420]
 
 [node name="You" type="CharacterBody3D" parent="." unique_id=190344720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_fy71y")
+
+[node name="Pivot" type="Node3D" parent="You" unique_id=1105354183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("2_jnnqk")
+
+[node name="Axe" type="CharacterBody3D" parent="You/Pivot" unique_id=40420076]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="You/Pivot/Axe" unique_id=1591158782]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 2)
+radius = 0.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="You/Pivot/Axe" unique_id=1257478857]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 2)
+shape = SubResource("CylinderShape3D_1vekt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="You" unique_id=539529491]
 shape = SubResource("CapsuleShape3D_1vekt")
@@ -25,13 +40,3 @@ material = SubResource("StandardMaterial3D_1vekt")
 
 [node name="Camera3D" type="Camera3D" parent="You" unique_id=1132930781]
 transform = Transform3D(1, 0, 0, 0, 0.75242203, 0.6586814, 0, -0.6586814, 0.75242203, 0, 4.9169483, 8.935081)
-
-[node name="Axe" type="CharacterBody3D" parent="." unique_id=40420076]
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Axe" unique_id=1591158782]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 2)
-radius = 0.2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Axe" unique_id=1257478857]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 2)
-shape = SubResource("CylinderShape3D_1vekt")
