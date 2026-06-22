@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://73fg5lrpsxec"]
+
+[ext_resource type="Shader" uid="uid://b0c34uhr5d8oy" path="res://Resources/Shaders/dynamic-progress-bar.gdshader" id="1_dgwog"]
+[ext_resource type="Texture2D" uid="uid://bq0xvac2nles3" path="res://Images/GUI/bubble_mask.png" id="2_dgwog"]
+
+[sub_resource type="Gradient" id="Gradient_dgwog"]
+interpolation_mode = 2
+colors = PackedColorArray(0.11549998, 0.77, 0.50819993, 1, 1.2880034, 2.2241454, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_86fst"]
+gradient = SubResource("Gradient_dgwog")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cton7"]
+shader = ExtResource("1_dgwog")
+shader_parameter/progress = 0.82400003914
+shader_parameter/background_color = Color(0, 1, 0.23333335, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture2D_86fst")
+shader_parameter/mask_texture = ExtResource("2_dgwog")
+shader_parameter/wave_amplitude = 0.01600000076
+shader_parameter/wave_frequency = 4.3190002051525
+shader_parameter/wave_speed = 2.4890001182275
+shader_parameter/wave_direction = Vector2(1, 0)
+shader_parameter/particle_speed = 0.05
+shader_parameter/particle_lifetime = 3.0
+shader_parameter/particle_softness = 0.01
+shader_parameter/particle_spacing = 0.1
+shader_parameter/particle_offset = Vector2(0, 0.24)
+shader_parameter/particle_start_scale = Vector2(0.02, 0.02)
+shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
+shader_parameter/particle_scale_randomness = 0.5990000284525
+shader_parameter/particle_amount = 0
+
+[node name="GameUI" type="Control" unique_id=1163402603]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HopeBar" type="TextureRect" parent="." unique_id=850998177]
+texture_filter = 2
+material = SubResource("ShaderMaterial_cton7")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -204.0
+offset_right = 92.0
+offset_bottom = 52.0
+grow_vertical = 2
+pivot_offset = Vector2(64, 66)
+offset_transform_enabled = true
+texture = ExtResource("2_dgwog")
