@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://87n4fj18ns3m"]
+
+[ext_resource type="PackedScene" uid="uid://ddtgwks68ibxn" path="res://Scenes/planet_angel.tscn" id="1_1xbnp"]
+[ext_resource type="Shader" uid="uid://bsdnjd6fnn45j" path="res://Scenes/sky_shader.gdshader" id="1_7ejg2"]
+[ext_resource type="Texture2D" uid="uid://dlt6gsdua6vqo" path="res://Images/Sky/Blue_Nebula_07-512x512.png" id="2_px1xi"]
+[ext_resource type="Script" uid="uid://y6pgp1wxh3lr" path="res://Scenes/track_cam.gd" id="4_2jkh2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_px1xi"]
+shader = ExtResource("1_7ejg2")
+shader_parameter/front = ExtResource("2_px1xi")
+shader_parameter/back = ExtResource("2_px1xi")
+shader_parameter/left = ExtResource("2_px1xi")
+shader_parameter/right = ExtResource("2_px1xi")
+shader_parameter/top = ExtResource("2_px1xi")
+shader_parameter/bottom = ExtResource("2_px1xi")
+
+[sub_resource type="Sky" id="Sky_0oy4t"]
+sky_material = SubResource("ShaderMaterial_px1xi")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_cton7"]
+background_mode = 2
+background_energy_multiplier = 0.75
+sky = SubResource("Sky_0oy4t")
+ambient_light_source = 2
+ambient_light_color = Color(0.41, 0.41, 0.41, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0oy4t"]
+shading_mode = 0
+albedo_color = Color(1.8984075, 1.6175858, 0.60230774, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cton7"]
+material = SubResource("StandardMaterial3D_0oy4t")
+radius = 54.5
+height = 109.0
+
+[node name="SpaceWorld" type="Node3D" unique_id=205946169]
+
+[node name="planet_angel" parent="." unique_id=1973552739 node_paths=PackedStringArray("camera") instance=ExtResource("1_1xbnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 109)
+camera = NodePath("../nest/track_cam")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=397099072]
+environment = SubResource("Environment_cton7")
+
+[node name="nest" type="Node3D" parent="." unique_id=2042585279]
+
+[node name="track_cam" type="Camera3D" parent="nest" unique_id=946550528 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+fov = 60.0
+script = ExtResource("4_2jkh2")
+target = NodePath("../../planet_angel")
+
+[node name="SunFucker" type="MeshInstance3D" parent="." unique_id=1752389050]
+mesh = SubResource("SphereMesh_cton7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SunFucker" unique_id=172506187]
+omni_range = 75.0

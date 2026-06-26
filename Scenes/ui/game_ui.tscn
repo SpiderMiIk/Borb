@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://b0c34uhr5d8oy" path="res://Resources/Shaders/dynamic-progress-bar.gdshader" id="1_dgwog"]
 [ext_resource type="Texture2D" uid="uid://bq0xvac2nles3" path="res://Images/GUI/bubble_mask.png" id="2_dgwog"]
+[ext_resource type="Texture2D" uid="uid://r50d68ku8l44" path="res://Images/GUI/crosshair052.png" id="3_lqmj7"]
 
 [sub_resource type="Gradient" id="Gradient_dgwog"]
 interpolation_mode = 2
@@ -39,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HopeBar" type="TextureRect" parent="." unique_id=850998177]
+visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_cton7")
 layout_mode = 1
@@ -53,3 +55,20 @@ grow_vertical = 2
 pivot_offset = Vector2(64, 66)
 offset_transform_enabled = true
 texture = ExtResource("2_dgwog")
+
+[node name="crosshair" type="TextureRect" parent="." unique_id=671798431]
+modulate = Color(0.612, 1, 0.029999971, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lqmj7")
+expand_mode = 5

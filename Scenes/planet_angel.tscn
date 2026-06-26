@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ddtgwks68ibxn"]
+
+[ext_resource type="Script" uid="uid://bnfn803ji0xh7" path="res://Scenes/planet_angel.gd" id="1_ggxr7"]
+[ext_resource type="Material" uid="uid://cnbwuo48fgihe" path="res://Resources/Materials/planet_blue.tres" id="1_ic7hv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cton7"]
+material = ExtResource("1_ic7hv")
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cton7"]
+
+[node name="planet_angel" type="CharacterBody3D" unique_id=1973552739]
+script = ExtResource("1_ggxr7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1444051677]
+mesh = SubResource("SphereMesh_cton7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=38225492]
+shape = SubResource("SphereShape3D_cton7")

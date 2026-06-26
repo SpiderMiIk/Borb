@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://dnrd2raoxc13q"]
+
+[sub_resource type="SystemFont" id="SystemFont_0oy4t"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[resource]
+default_font = SubResource("SystemFont_0oy4t")
+default_font_size = 16
